@@ -1,2 +1,2 @@
-# side-project
- As repository name, there's my side project repository, don't expect to find anything useful.
+# Side Project
+就跟這個repo的名字一樣，這地方擺的是我自己做/改的東西，不要期望裡面有啥神奇的東西......
