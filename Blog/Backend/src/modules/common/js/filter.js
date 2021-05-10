@@ -1,13 +1,13 @@
 app.filter('adminTypeName', function() {
 	return function(number) {
 	    if(number ===0){
-	    	return "系統維護" ;
+	    	return "System Maintenance" ;
 	    }else if(number ===1){
-	    	return "平台管理員" ;
+	    	return "Administrator" ;
 	    }else if(number ===2){
-	    	return "平台維護員" ;
+	    	return "Maintainer" ;
 	    }else if(number ===3){
-	    	return "平台使用者" ;
+	    	return "User" ;
 		}else{
 	    	return "" ;
 	    }
@@ -17,9 +17,9 @@ app.filter('adminTypeName', function() {
 app.filter('boolean', function() {
 	return function(number) {
 		if(number === 0) {
-			return "否" ;
+			return "False" ;
 		} else if(number === 1) {
-			return "是" ;
+			return "True" ;
 		}else{
 			return "" ;        
 		}
@@ -29,11 +29,11 @@ app.filter('boolean', function() {
 app.filter('operatingLogTypeName', function() {
 	return function(number) {
 		if(number === 1) {
-			return "新增" ;
+			return "Add" ;
 		} else if(number === 2) {
-			return "刪除" ;
+			return "Delete" ;
 		} else if(number === 3) {
-			return "修改" ;
+			return "Edit" ;
 		}else{
 			return "" ;        
 		}

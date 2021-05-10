@@ -4,7 +4,7 @@
     font-size: 24px;
     font-weight: lighter;
     /* color: #9F4344 !important; */
-    color: #34ACC6 !important;
+    color: #FF9F33 !important;
 }
 
 .page-header h1 {
@@ -74,22 +74,22 @@
 
 /*** btn start ***/
 .btn.btn-edit, .btn.btn-edit.focus, .btn.btn-edit:focus, .btn.btn-edit.focus:hover, .btn.btn-edit:active:hover, .btn.btn-edit:focus:active{
-    background-color: #74bed4 !important;
-    border-color: #74bed4 !important;
+    background-color: #FFAF33 !important;
+    border-color: #FFAF33 !important;
     border-radius: 10px;
     margin: 2px auto;
     text-shadow: initial;
 }
 .btn.btn-edit:focus:hover, .btn.btn-edit:hover, .open>.dropdown-toggle.btn-edit {
     color: #fff!important;
-    background-color: #91d1e5 !important;
-    border-color: #91d1e5 !important; /*set the color you want here*/
+    background-color: #FFC869 !important;
+    border-color: #FFC869 !important; /*set the color you want here*/
 
 }
 
 .btn.btn-save, .btn.btn-save.focus, .btn.btn-save:focus, .btn.btn-save.focus:hover, .btn.btn-save:active:hover, .btn.btn-save:focus:active{
-    background-color: #34ACC6 !important;
-    border-color: #34ACC6 !important;
+    background-color: #FF9F33 !important;
+    border-color: #FF9F33 !important;
     border-radius: 10px;
     margin: 2px auto;
     text-shadow: initial;
@@ -101,8 +101,8 @@
 }
 
 .btn.btn-add, .btn.btn-add.focus, .btn.btn-add:focus, .btn.btn-add.focus:hover, .btn.btn-add:active:hover, .btn.btn-add:focus:active{
-    background-color: #34ACC6 !important;
-    border-color: #34ACC6 !important;
+    background-color: #FF9F33 !important;
+    border-color: #FF9F33 !important;
     border-radius: 10px;
     margin: 2px auto;
     text-shadow: initial;
@@ -111,21 +111,21 @@
     color: #fff!important;
     /* background-color: #f09596 !important;
     border-color: #f09596 !important;*/ /*set the color you want here */
-    background-color: #34ACC6 !important;
-    border-color: #34ACC6 !important; /*set the color you want here*/
+    background-color: #FF9F33 !important;
+    border-color: #FF9F33 !important; /*set the color you want here*/
 }
 
 .btn.btn-search, .btn.btn-search.focus, .btn.btn-search:focus, .btn.btn-search.focus:hover, .btn.btn-search:active:hover, .btn.btn-search:focus:active{
-    background-color: #439f9f !important;
-    border-color: #439f9f !important;
+    background-color: #FF9027 !important;
+    border-color: #FF9027 !important;
     border-radius: 10px;
     margin: 2px auto;
     text-shadow: initial;
 }
 .btn.btn-search:focus:hover, .btn.btn-search:hover, .open>.dropdown-toggle.btn-search {
     color: #fff!important;
-    background-color: #69b2b2 !important;
-    border-color: #69b2b2 !important; /*set the color you want here*/
+    background-color: #FFAA59 !important;
+    border-color: #FFAA59 !important; /*set the color you want here*/
 }
 
 .btn.btn-import, .btn.btn-import.focus, .btn.btn-import:focus, .btn.btn-import.focus:hover, .btn.btn-import:active:hover, .btn.btn-import:focus:active{
@@ -156,8 +156,8 @@
 }
 
 .btn.btn-guide, .btn.btn-guide.focus, .btn.btn-guide:focus, .btn.btn-guide.focus:hover, .btn.btn-guide:active:hover, .btn.btn-guide:focus:active{
-    background-color: #34ACC6 !important;
-    border-color: #34ACC6 !important;
+    background-color: #FF9F33 !important;
+    border-color: #FF9F33 !important;
     border-radius: 10px;
     margin: 2px auto;
     text-shadow: initial;
@@ -169,8 +169,8 @@
 }
 
 .btn.btn-bus, .btn.btn-bus.focus, .btn.btn-bus:focus, .btn.btn-bus.focus:hover, .btn.btn-bus:active:hover, .btn.btn-bus:focus:active{
-    background-color: #34ACC6 !important;
-    border-color: #34ACC6 !important;
+    background-color: #FF9F33 !important;
+    border-color: #FF9F33 !important;
     border-radius: 10px;
     margin: 2px auto;
     text-shadow: initial;
@@ -194,16 +194,16 @@
     border-color: #ABBAC3 !important; /*set the color you want here*/
 }
 .btn.btn-ticket, .btn.btn-ticket.focus, .btn.btn-ticket:focus, .btn.btn-ticket.focus:hover, .btn.btn-ticket:active:hover, .btn.btn-ticket:focus:active{
-    background-color: #439f9f !important;
-    border-color: #439f9f !important;
+    background-color: #FF9027 !important;
+    border-color: #FF9027 !important;
     border-radius: 10px;
     margin: 2px auto;
     text-shadow: initial;
 }
 .btn.btn-ticket:focus:hover, .btn.btn-ticket:hover, .open>.dropdown-toggle.btn-ticket {
     color: #fff!important;
-    background-color: #69b2b2 !important;
-    border-color: #69b2b2 !important; /*set the color you want here*/
+    background-color: #FFAA59 !important;
+    border-color: #FFAA59 !important; /*set the color you want here*/
 }
 
 /*** btn end ***/
@@ -222,8 +222,8 @@
     text-shadow: initial;
 }
 .widget-color-samon>.widget-header {
-    background: #34ACC6;
-    border-color: #34ACC6;
+    background: #FF9F33;
+    border-color: #FF9F33;
 
 }
 .widget-header {
@@ -239,7 +239,7 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffeeeeee', GradientType=0);
     color: #669FC7;
     /* border-bottom: 1px solid #F96A76 !important; */
-    border-bottom: 1px solid #34ACC6 !important;
+    border-bottom: 1px solid #FF9F33 !important;
     padding-left: 12px;
     border-top-right-radius: 9px;
     border-top-left-radius: 9px;
@@ -248,26 +248,26 @@
 .no-skin .nav-list>li:hover>a {
     background-color: #FFF;
     /* color: #D77976;  */
-    color: #34ACC6;
+    color: #FF9F33;
 }
 .no-skin .nav-list>li.open>a {
     background-color: #FAFAFA;
     /* color: #D77976; */
-    color: #34ACC6;
+    color: #FF9F33;
 }
 .no-skin .nav-list>li>a:focus {
     background-color: #F8F8F8;
     /* color: #D77976; */
-    color: #34ACC6;
+    color: #FF9F33;
 }
 .nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
     background-color: #eee;
     /* border-color: #d77976; */
-    color: #34ACC6;
+    color: #FF9F33;
 }
 .no-skin .nav-list>li .submenu>li>a:hover {
     /* color: #d77976; */
-    color: #34ACC6;
+    color: #FF9F33;
     background-color: #eee;
 }
 .nav-list>li:before {
@@ -281,7 +281,7 @@
     max-width: 3px;
     overflow: hidden;
     /* background-color: #F09596; */
-    background-color: #34ACC6;
+    background-color: #FF9F33;
 }
 /*--f ont size --*/
 

@@ -3,8 +3,8 @@
         <div class="page-content">
             <div class="page-header">
                 <h1>
-                    <a href="#/home" style="color: #006895; text-decoration:none;">
-                        商家管理
+                    <a href="#/home" style="color: #9F4344; text-decoration:none;">
+                        Content Management
                     </a>
                 </h1>
             </div>
@@ -14,7 +14,7 @@
                 <div class="col-xs-12 col-sm-12 widget-container-col">
                     <div class="widget-box widget-color-samon" id="widget-box-9">
                         <div class="widget-header">
-                            <h5 class="widget-title">商家管理查詢</h5>
+                            <h5 class="widget-title">Content Search</h5>
                             <div class="widget-toolbar">
                                 <a href="#" data-action="collapse">
                                     <i class="1 ace-icon fa fa-chevron-up bigger-125"></i>
@@ -29,20 +29,20 @@
                                     <div class="col-xs-6 col-sm-6 widget-container-col">
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label no-padding-right">
-                                                商家統編 </label>
+                                                Title </label>
                                             <div class="col-sm-9">
-                                                <input type="text" placeholder="請輸入8位數字" class="form-control"
-                                                    ng-model="queryCondition.taxId">
+                                                <input type="text" placeholder="" class="form-control"
+                                                    ng-model="queryCondition.title">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="widget-toolbox padding-8 clearfix">
-                                <button class="btn btn-sm btn-add pull-right margin_left" ng-click="addVendor()">
-                                    <i class="ace-icon glyphicon glyphicon-plus"></i>新增</button>
-                                <button class="btn btn-sm btn-search pull-right margin_left" ng-click="searchVendor()">
-                                    <i class="ace-icon glyphicon glyphicon-search"></i>查詢</button>
+                                <button class="btn btn-sm btn-add pull-right margin_left" ng-click="addContent()">
+                                    <i class="ace-icon glyphicon glyphicon-plus"></i>Add</button>
+                                <button class="btn btn-sm btn-search pull-right margin_left" ng-click="searchContent()">
+                                    <i class="ace-icon glyphicon glyphicon-search"></i>Search</button>
                             </div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                 <div class="col-xs-12 col-sm-12 margin_top">
                     <div class="row ">
                         <div class="x_content">
-                            <table id="vendor_table" class="table table-striped table-bordered" width="100%"></table>
+                            <table id="content_table" class="table table-striped table-bordered" width="100%"></table>
                         </div>
                     </div>
                 </div>

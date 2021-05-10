@@ -27,12 +27,10 @@
   </delete>
   <insert id="insert" parameterType="com.blog.db.operatinglog.model.OperatingLog">
     insert into operating_log (OPERATING_LOG_ID, OPERATING_LOG_TYPE, 
-      TABLE_ID, TABLE_PID, OPERATING_MODE, 
-      USER_ID, REMARK, CREATION_DATE
+      TABLE_ID, TABLE_PID, OPERATING_MODE, REMARK, CREATION_DATE
       )
     values (#{operatingLogId,jdbcType=INTEGER}, #{operatingLogType,jdbcType=INTEGER}, 
-      #{tableId,jdbcType=INTEGER}, #{tablePid,jdbcType=INTEGER}, #{operatingMode,jdbcType=INTEGER}, 
-      #{userId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP}
+      #{tableId,jdbcType=INTEGER}, #{tablePid,jdbcType=INTEGER}, #{operatingMode,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.blog.db.operatinglog.model.OperatingLog">

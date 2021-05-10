@@ -32,18 +32,13 @@ import com.blog.api_backend.model.request.AdminListRequest;
 import com.blog.api_backend.model.request.DeleteAdmin;
 import com.blog.api_backend.model.request.EditAdminRequest;
 import com.blog.api_backend.model.request.InsertAdminRequest;
-import com.blog.api_backend.model.request.LogRequest;
 import com.blog.api_backend.model.request.LoginBackendRequest;
 import com.blog.api_backend.model.request.UpdataPwRequest;
-import com.blog.api_backend.model.request.VendorRequest;
 import com.blog.api_backend.model.response.FileUploadResponse;
-import com.blog.api_backend.model.response.OperatingLogView;
-import com.blog.api_backend.model.response.VendorResponse;
 import com.blog.api_backend.service.ApiBackendService;
 import com.blog.base.controller.BaseController;
 import com.blog.base.model.BaseModel;
 import com.blog.db.admininfo.model.AdminInfo;
-import com.blog.db.vendor.model.Vendor;
 import com.blog.util.FileUtil;
 import com.blog.util.LogUtils;
 import com.blog.util.TimerUtil;
@@ -314,100 +309,4 @@ public class ApiBackendController extends BaseController {
 		}
 		return res;
 	}
-
-	// log列表
-	@RequestMapping(value = "/queryLogList", produces = "application/json")
-	public @ResponseBody BaseModel queryLogList(HttpSession session, HttpServletRequest request,
-			HttpServletResponse resp, @RequestBody LogRequest logRequest) {
-		BaseModel res = new BaseModel();
-		AdminInfo adminInfo = (AdminInfo) session.getAttribute("adminInfo");
-		if (adminInfo == null) {
-			res.setResult(false);
-			res.setMessage("unlogin");
-			return res;
-		}
-
-		List<OperatingLogView> logList = apiBackendService.queryLogList(logRequest);
-		res.setResult(true);
-		res.setData(logList);
-		res.setMessage("成功");
-		return res;
-	}
-
-	// ----------------基本CRUD--------------
-	// ----------------Vendor---------------
-	// 加入商家
-	@RequestMapping(value = "/saveVendor", produces = "application/json")
-	public @ResponseBody BaseModel saveVendor(HttpSession httpSession, HttpServletRequest request,
-			HttpServletResponse resp, @RequestBody Vendor vendor) {
-		BaseModel res = new BaseModel();
-		AdminInfo adminInfo = (AdminInfo) httpSession.getAttribute("adminInfo");
-		if (adminInfo == null) {
-			res.setResult(false);
-			res.setMessage("unlogin");
-			return res;
-		}
-		int result = 0;
-
-		result = apiBackendService.saveVendor(vendor, adminInfo.getAdminId());
-
-		if (result == 1) {
-			res.setResult(true);
-			res.setMessage("儲存成功");
-		} else if (result == 2) {
-			res.setResult(false);
-			res.setMessage("資料有重複");
-		} else {
-			res.setResult(false);
-			res.setMessage("儲存失敗");
-		}
-		return res;
-	}
-
-	// 查詢商家列表
-	@RequestMapping(value = "/queryVendorList", produces = "application/json")
-	public @ResponseBody BaseModel queryVendorList(HttpSession httpSession, HttpServletRequest request,
-			HttpServletResponse resp, @RequestBody VendorRequest vendorRequest) {
-		BaseModel res = new BaseModel();
-
-		List<VendorResponse> vendorList = apiBackendService.queryVendorList(vendorRequest);
-		res = basicOutput(vendorList);
-		return res;
-	}
-
-	// 查詢商家
-	@RequestMapping(value = "/queryVendor", produces = "application/json")
-	public @ResponseBody BaseModel queryVendor(HttpSession httpSession, HttpServletRequest request,
-			HttpServletResponse resp, @RequestBody Vendor vendor) {
-		BaseModel res = new BaseModel();
-
-		vendor = apiBackendService.queryVendor(vendor);
-		res = basicOutput(vendor);
-		return res;
-	}
-
-	// 刪除商家
-	@RequestMapping(value = "/deleteVendor", produces = "application/json")
-	public @ResponseBody BaseModel deleteVendor(HttpSession httpSession, HttpServletRequest request,
-			HttpServletResponse resp, @RequestBody Vendor vendor) {
-		BaseModel res = new BaseModel();
-		AdminInfo adminInfo = (AdminInfo) httpSession.getAttribute("adminInfo");
-		if (adminInfo == null) {
-			res.setResult(false);
-			res.setMessage("unlogin");
-			return res;
-		}
-		int result = apiBackendService.deleteVendor(vendor, adminInfo.getAdminId());
-		if (result == 1) {
-			res.setResult(true);
-			res.setMessage("新增成功");
-		} else {
-			res.setResult(false);
-			res.setMessage("新增失敗");
-		}
-		return res;
-	}
-	
-	// ----------------Vendor end---------------
-	// ----------------基本CRUD end--------------
 }

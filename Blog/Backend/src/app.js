@@ -52,32 +52,32 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
 				controller: 'backendAccountController'
 			}
 		}
-	}).state('vendor', {
-		url: '/vendor',
+	}).state('content', {
+		url: '/content',
 		views: {
 			"content": {
-				templateUrl: 'modules/vendor/view/vendor.html?v=20201102',
-				controller: 'vendorController'
+				templateUrl: 'modules/content/view/content.html?v=20201102',
+				controller: 'contentController'
 			}
 		}
-	}).state('vendorEdit', {
-		url: '/vendorEdit',
+	}).state('contentEdit', {
+		url: '/contentEdit',
 		views: {
 			"content": {
-				templateUrl: 'modules/vendor/view/vendorEdit.html?v=20201102',
-				controller: 'vendorEditController'
+				templateUrl: 'modules/content/view/contentEdit.html?v=20201102',
+				controller: 'contentEditController'
 			}
 		},
 		params: {
 			vendorId: null
 		},
 		reload: true
-	}).state('updataPw', {
-		url: '/updataPw',
+	}).state('updatePw', {
+		url: '/updatePw',
 		views: {
 			"content": {
-				templateUrl: 'modules/user/view/updataPw.html?v=20201102',
-				controller: 'updataPwController'
+				templateUrl: 'modules/user/view/updatePw.html?v=20201102',
+				controller: 'updatePwController'
 			}
 		},
 		reload: true

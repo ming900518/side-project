@@ -49,26 +49,19 @@ app.controller('backendAccountController', function ($rootScope, $scope, $window
     }
 
     var opt = {
-        "oLanguage": {
-            "sUrl": "dataTables.zh-tw.txt"
-        },
         "bJQueryUI": true,
         "sPaginationType": 'full_numbers',
         data: $scope.backendAccountList,
         columns: [{
-                title: "帳號",
+                title: "Account",
                 data: "userCode",
                 sWidth: "15%"
             },{
-                title: "姓名",
+                title: "Name",
                 data: "userName",
                 sWidth: "15%"
             },{
-                title: "所屬單位",
-                data: "department",
-                sWidth: "15%"
-            }, {
-                title: "權限角色",
+                title: "Rule",
                 data: null,
                 sWidth: "15%",
                 render: function (data, type, full, meta) {
@@ -84,10 +77,10 @@ app.controller('backendAccountController', function ($rootScope, $scope, $window
                 render: function (data, type, full, meta) {
                     var row = meta.row;
                     var btnStr =
-                        '<button name="edit" class="btn btn-sm btn-edit" value="' + row + '"><i class="ace-icon fa fa-pencil-square-o"></i>編輯</button>' +
+                        '<button name="edit" class="btn btn-sm btn-edit" value="' + row + '"><i class="ace-icon fa fa-pencil-square-o"></i>Edit</button>' +
                         '&nbsp;';
                     if ($rootScope.rootUser.adminType < 2 ) {
-                        btnStr += '<button name="delete" class="btn btn-sm btn-dele "  value="' + row + '"><i class="ace-icon fa fa-trash-o"></i>刪除</button> ' +
+                        btnStr += '<button name="delete" class="btn btn-sm btn-dele "  value="' + row + '"><i class="ace-icon fa fa-trash-o"></i>Remove</button> ' +
                             '&nbsp;';
                     }
 
@@ -133,19 +126,19 @@ app.controller('backendAccountController', function ($rootScope, $scope, $window
                 scope: $scope,
                 controller: function ($scope, $modalInstance, util) {
                     $scope.save = function (valid) {
-                        util.confirm('確定要新增 <font color="red">' + $scope.adminInfo.userName + '</font>', function (r) {
+                        util.confirm('Are you sure to add <font color="red">' + $scope.adminInfo.userName + '</font>?', function (r) {
                             if (r) {
                                 if (valid) {
                                 	if ($scope.adminInfo.userPw.length < 8) {
-                        				util.alert("密碼請設定八碼(含八碼)以上!");
+                        				util.alert("Password should be longer than 8 characters.");
                         				return false;
                         			}
                         			if ($scope.adminInfo.userPw.length > 20) {
-                        				util.alert("密碼請設定二十碼(含二十碼)以下!");
+                        				util.alert("Password should be shorter than 20 characters.");
                         				return false;
                         			}
                         			if ($scope.adminInfo.userPw.indexOf(' ') > 0) {
-                        				util.alert("密碼禁止使用空白密碼!");
+                        				util.alert("Password should not be blank.");
                         				return false;
                         			}
 
@@ -154,7 +147,7 @@ app.controller('backendAccountController', function ($rootScope, $scope, $window
                         			//var reg = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[~!@#$%^&*()_+`\-={}\[\]:";'<>?,.\/]).{4,16}$/;
                         			var pw_valid = reg.test($scope.adminInfo.userPw);
                         			if (pw_valid == false) {
-                        				util.alert("密碼設定應包括數字、英文字母及特別字元!");
+                        				util.alert("Password should include alphabets and numbers.");
                         				return false;
                         			}
                         			
@@ -163,7 +156,7 @@ app.controller('backendAccountController', function ($rootScope, $scope, $window
                                     backendAccountService.addAdmin($scope.adminInfo, function (data, status, headers, config) {
                                         if (data.result) {
                                             $scope.cancel();
-                                            util.alert('新增成功');
+                                            util.alert('Add successfully.');
                                             $scope.backendAccount();
                                         } else {
                                             util.alert(data.message);
@@ -171,7 +164,7 @@ app.controller('backendAccountController', function ($rootScope, $scope, $window
                                         $scope.loading = false;
                                     })
                                 } else {
-                                    util.alert('必填欄位未輸入');
+                                    util.alert('Required fields are not filled in completely.');
                                 }
                             }
                         })
@@ -185,7 +178,7 @@ app.controller('backendAccountController', function ($rootScope, $scope, $window
                 }
             })
         } else {
-            util.alert('權限不足');
+            util.alert('Permission Denied.');
         }
     }
 
@@ -199,14 +192,14 @@ app.controller('backendAccountController', function ($rootScope, $scope, $window
             controller: function ($scope, $modalInstance, util) {
                 $scope.save = function (valid) {
                     if ($rootScope.rootUser.adminType < 2 ) {
-                        util.confirm('確定要修改 <font color="red">' + data.userName + '</font>', function (r) {
+                        util.confirm('Are you sure to edit <font color="red">' + data.userName + '</font>?', function (r) {
                             if (r) {
                                 if (valid) {                        			
                                     $scope.loading = true;
                                     backendAccountService.editAdmin($scope.adminInfo, function (data, status, headers, config) {
                                         if (data.result) {
                                             $scope.cancel();
-                                            util.alert('修改成功');
+                                            util.alert('Edit successfully.');
                                             $scope.backendAccount();
                                         } else {
                                             util.alert(data.message);
@@ -214,13 +207,13 @@ app.controller('backendAccountController', function ($rootScope, $scope, $window
                                         $scope.loading = false;
                                     })
                                 } else {
-                                    util.alert('必填欄位未輸入');
+                                    util.alert('Required fields are not filled in completely.');
                                 }
                             }
                         })
 
                     } else {
-                        util.alert('權限不足');
+                        util.alert('Permission Denied');
                     }
                 }
                 $scope.cancel = function () {
@@ -235,15 +228,15 @@ app.controller('backendAccountController', function ($rootScope, $scope, $window
 
     //刪除後台帳號
     $scope.deleteAccount = function (data) {
-        util.confirm('確定要刪除 <font color="red">' + data.userName + '</font>', function (r) {
+        util.confirm('Are you sure to remove <font color="red">' + data.userName + '</font>?', function (r) {
             if (r) {
                 if (data.adminId == 0) {
-                    util.alert('此帳號無法刪除!');
+                    util.alert('This account is not removable.');
                 } else {
                     backendAccountService.deleteAdmin(data, function (data, status, headers, config) {
                         if (data.result) {
                             $scope.backendAccount();
-                            util.alert("刪除成功");
+                            util.alert("Remove successfully.");
                         } else {
                             util.alert(data.message);
                         }

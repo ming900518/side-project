@@ -1,0 +1,63 @@
+<div class="main-content-inner">
+  <div class="page-content">
+	  <div class="page-header">
+		  <h1>
+			  <a href="#/home" style="color: #9F4344; text-decoration:none;">
+				  Change Password
+			  </a>
+		  </h1>
+	  </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="x_content dataTables" ng-show="!isAdd">
+        	<form class="pageContsBlock" name="myForm">
+				<div class="form-group">
+		            <div class="row">
+		                <div class="col-md-6 col-sm-12 col-xs-12 lg-p-l-0">
+		                  	<label class="col-md-5 col-sm-3 col-xs-12 control-label">Old Password</label>
+		                    <div class="col-md-7 col-md-offset-0 col-sm-9 col-sm-offset-0 col-xs-12">
+		                        <input type="password" class="form-control" ng-model="adminInfo.userPw" required/>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <div class="row">
+		                <div class="col-md-6 col-sm-12 col-xs-12 lg-p-l-0">
+		                  	<label class="col-md-5 col-sm-3 col-xs-12 control-label">New Password</label>
+		                    <div class="col-md-7 col-md-offset-0 col-sm-9 col-sm-offset-0 col-xs-12">
+		                        <input type="password" class="form-control" ng-model="adminInfo.newPw" required />
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <div class="row">
+		                <div class="col-md-6 col-sm-12 col-xs-12 lg-p-l-0">
+		                  	<label class="col-md-5 col-sm-3 col-xs-12 control-label">Confirm New Password</label>
+		                    <div class="col-md-7 col-md-offset-0 col-sm-9 col-sm-offset-0 col-xs-12">
+		                        <input type="password" class="form-control" ng-model="adminInfo.againNewPw" required/>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+				 <div class="form-group">
+		              <div class="row">
+		                <label class="col-md-12 col-sm-12 col-xs-12 control-label font12_red" >
+							Password length should be 8 - 20 characters, include numbers and alphabets. Blank is not allowed.
+		                </label>
+		              </div>
+		          </div>
+		        <div class="btnBar">
+		            <button type="button" class="btn btn-sm btn-save" ng-click="updateAdmin(myForm.$valid)">Send</button>
+		        </div>
+			</form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-include src="'modules/share/view/footer.html'"></ng-include>

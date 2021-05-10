@@ -1,0 +1,12 @@
+mat-grid-tile {
+  background: lightblue;
+}
+mat-grid-tile-header {
+  font-size: large;
+}
+mat-grid-tile-footer {
+  font-size: smaller;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
