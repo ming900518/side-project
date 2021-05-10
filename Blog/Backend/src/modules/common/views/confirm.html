@@ -1,0 +1,24 @@
+<div class='widget-header'>
+	<h4 class='smaller'>
+		<i class='ace-icon fa fa-exclamation-triangle red'>
+		</i> Confirm
+		<i class="fa fa-times" style="float:right;" ng-click="close()"></i> 
+	</h4>
+</div>
+<div>
+	<p class="alert bigger-110 bolder center grey">
+		<i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
+		<span ng-bind-html="msg"></span>
+	</p>
+	<div align="center">
+		<button class="btn btn-sm btn-save" ng-click="close(true)">
+			<!-- <i class='ace-icon fa fa fa-check bigger-110'></i>&nbsp;  -->
+			確定
+		</button>
+		<button class="btn btn-sm btn-cancel" ng-click="close(false)">
+			<!-- <i class='ace-icon fa fa-times bigger-110'></i>&nbsp;  -->
+			取消
+		</button>
+	</div>
+	<div class="space-6"></div>
+</div>

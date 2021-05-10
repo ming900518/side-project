@@ -1,0 +1,145 @@
+.rapid_balls{
+	margin-top: 10px;
+	border:1px #0040FF solid;
+	border-radius:3px;
+	height: 55px;
+}
+
+.rapid_balls_number{
+	margin-top: 10px;
+	border:1px #0040FF solid;
+	border-radius:3px;
+	height: 140px;
+	display:block;
+}
+
+.combo_balls_number{
+	margin-top: 10px;
+	border:1px #0040FF solid;
+	border-radius:3px;
+	height: 280px;
+	display:block;
+}
+
+.rapid_balls_star{
+	margin-top: 10px;
+	border:1px #0040FF solid;
+	border-radius:3px;
+	height: 75px;
+	display:block;
+}
+
+.rapid_balls_title{
+    display:inline-block;
+    float: left;
+    width : 70px;
+    background-color:#337ab7;
+    height: 100%;
+    padding:3px 3px 3px 3px;
+    font-size: 16px;
+    color:white;
+    text-align: center;
+  }
+
+.rapid_star_title{
+	  display:inline-block;
+    float: left;
+    width : 40px;
+    background-color:#337ab7;
+    height: 100%;
+    padding:3px 3px 3px 3px;
+    font-size: 16px;
+    color:white;
+    text-align: center;
+}
+
+  .rapid_balls_body{
+  	display: inline-block;
+    height: 100%;
+    width: calc(100% - 70px);
+    padding: 3px;
+  }
+
+.rapid_star_body{
+  	display: inline-block;
+    height: 100%;
+    width: calc(100% - 40px);
+    padding: 3px;
+  }
+
+  .rapid_balls_table tr th{
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size: 18px;
+    color : blue;
+  }
+
+  .rapid_balls_digit_table tr th{
+    padding-left: 9px;
+    padding-right: 9px;
+    font-size: 18px;
+    color : blue;
+  }
+
+
+    .rapid_link_col_table tr th{
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size: 16px;
+    color : blue;
+  }
+
+  .rapid_link_col_digit_table tr th{
+    padding-left: 9px;
+    padding-right: 9px;
+    font-size: 16px;
+    color : blue;
+
+  }
+
+
+  .balls_number{
+	font-size: 16px;
+  	width: 100%;
+  	height: inherit;
+  }
+
+  .odds{
+	width:60px;
+	height:28px;
+	padding:2px 2px 2px 2px !important;
+	margin: 0 2px 0 2px;
+  }
+
+  .balls_no_group {
+    display: block;
+    width: 100%;
+    padding: 15px;
+}
+.text_block {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    width: 50px;
+    text-align: center;
+}
+
+.float_right {
+    float: right;
+}
+
+.balls_no {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    width: calc(100% - 120px);
+}
+
+.setting_box{
+	padding: 6px 6px 6px 6px;
+	margin-top: 10px;
+	border:1px #0040FF solid;
+	border-radius:3px;
+	height: 160px;
+	display:block;
+}

@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="bower_components/ace/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+<link rel="stylesheet" href="bower_components/ace/css/ace-skins.min.css" />
+<div class='widget-header'>
+	<h4 class='smaller'>
+		<i class='ace-icon fa fa-exclamation-circle blue'>
+		</i> Alert
+		<i class="fa fa-times" style="float:right;" ng-click="close()"></i> 
+	</h4>
+</div>
+<div>
+	<div class="alert alert-info bigger-110">
+		<span ng-bind-html="msg"></span>
+	</div>
+	<div align="center">
+		<button class="btn btn-sm btn-save" ng-click="close()">
+			<!-- <i class='ace-icon fa fa-check bigger-110'></i>&nbsp;  -->
+			確定
+		</button>
+	</div>
+	<div class="space-6"></div>
+</div>

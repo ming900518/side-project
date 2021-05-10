@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration>
+	<property name="LOG_HOME" value="/logs" />
+	<property name="CHARSET" value="UTF-8" />
+	<property name="PATTERN"	value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n" />
+	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>.%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg %n	</Pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>TRACE</level>
+		</filter>
+	</appender>
+
+	<appender name="error_log_file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>logs/error_Info_%d{yyyyMMdd}.%i.log</FileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	            <maxFileSize>100MB</maxFileSize>  
+	        	<maxHistory>365</maxHistory>  
+        	</timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${PATTERN}</pattern>
+            <charset>${CHARSET}</charset>
+        </encoder>
+    </appender>
+   	<logger name="error_log" level="DEBUG">
+        <appender-ref ref="error_log_file" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+    
+    <appender name="operate_log_file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>logs/operate_Info_%d{yyyyMMdd}.%i.log</FileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	            <maxFileSize>100MB</maxFileSize>  
+	        	<maxHistory>365</maxHistory>
+        	</timeBasedFileNamingAndTriggeringPolicy>  
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${PATTERN}</pattern>
+            <charset>${CHARSET}</charset>
+        </encoder>
+    </appender>
+   	<logger name="operate_log" level="DEBUG">
+        <appender-ref ref="operate_log_file" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+    
+    <appender name="fileControllerError_file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>logs/fileControllerError_%d{yyyyMMdd}.%i.log</FileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	            <maxFileSize>100MB</maxFileSize>  
+	        	<maxHistory>365</maxHistory>
+        	</timeBasedFileNamingAndTriggeringPolicy>  
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${PATTERN}</pattern>
+            <charset>${CHARSET}</charset>
+        </encoder>
+    </appender>
+   	<logger name="fileControllerError_log" level="DEBUG">
+        <appender-ref ref="fileControllerError_file" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <appender name="locationDataInfo_file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>logs/locationDataInfo_%d{yyyyMMdd}.%i.log</FileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>100MB</maxFileSize>  
+                <maxHistory>365</maxHistory>
+            </timeBasedFileNamingAndTriggeringPolicy>  
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${PATTERN}</pattern>
+            <charset>${CHARSET}</charset>
+        </encoder>
+    </appender>
+    <logger name="locationDataInfo_log" level="DEBUG">
+        <appender-ref ref="locationDataInfo_file" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+	<root>
+		<level value="INFO" />
+		<appender-ref ref="consoleAppender" />
+	</root>
+</configuration>

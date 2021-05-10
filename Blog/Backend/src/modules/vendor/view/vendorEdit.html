@@ -1,0 +1,82 @@
+<div class="main-content  cs-padding-20">
+    <div class="main-content-inner">
+        <div class="page-content">
+            <div class="page-header">
+                <h1>
+                    <a href="#/vendor" style="color: #006895; text-decoration:none;">
+                        商家管理
+                    </a>
+                </h1>
+            </div>
+            <!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 widget-container-col">
+                    <div class="widget-box widget-color-samon" id="widget-box-9">
+                        <div class="widget-header">
+                            <h5 class="widget-title">新增商家資料</h5>
+                            <div class="widget-toolbar">
+                                <a href="#" data-action="collapse">
+                                    <i class="1 ace-icon fa fa-chevron-up bigger-125"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <form class="widget-body" name="contentForm" id="contentForm">
+                            <div class="widget-main">
+                                <div class="row margin_top">
+                                    <div class="col-xs-12 col-sm-12 widget-container-col">
+                                        <div class="form-group">
+                                            <label class="col-sm-1 control-label no-padding-right">
+                                                <font color="#FF0000">*</font>商家統編
+                                            </label>
+                                            <div class="col-sm-5">
+                                                <input type="text" placeholder="" class="form-control"
+                                                    ng-model="vendor.taxId" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin_top">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="col-sm-1 control-label no-padding-right">
+                                                <font color="#FF0000">*</font>商家名稱 </label>
+                                            <div class="col-sm-5">
+                                                <input type="text" placeholder="" class="form-control"
+                                                    ng-model="vendor.vendorName" required>
+                                            </div>
+                                            <label class="col-sm-1 control-label no-padding-right">
+                                                <font color="#FF0000">*</font>負責人姓名 </label>
+                                            <div class="col-sm-5">
+                                                <input type="text" placeholder="" class="form-control"
+                                                    ng-model="vendor.ownerName" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin_top">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="col-sm-1 control-label no-padding-right">
+                                                <font color="#FF0000">*</font>備註 </label>
+                                            <div class="col-sm-11">
+                                                <input type="text" placeholder="若沒有備註，請填寫無。" class="form-control"
+                                                    ng-model="vendor.note" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-toolbox padding-8 clearfix">
+                                <button class="btn btn-sm btn-add pull-right margin_left" ng-click="saveVendor(contentForm.$valid)">
+                                    <i class="ace-icon glyphicon glyphicon-save"></i>儲存</button>
+                                <button class="btn btn-sm btn-search pull-right margin_left" ng-click="cancel()">
+                                    <i class="ace-icon glyphicon glyphicon-remove"></i>取消</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- /.main-content -->
+        </div>
+    </div>
+</div>
