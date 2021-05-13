@@ -3,7 +3,7 @@ package com.blog.db.admininfo.dao;
 import java.util.List;
 
 import com.blog.api_backend.model.request.LoginBackendRequest;
-import com.blog.api_backend.model.request.UpdataPwRequest;
+import com.blog.api_backend.model.request.UpdatePwRequest;
 import com.blog.db.admininfo.model.AdminInfo;
 
 public interface AdminInfoMapper {
@@ -26,6 +26,6 @@ public interface AdminInfoMapper {
 
     List<AdminInfo> queryAdminList();
 
-	AdminInfo inspectPwdForupdataPassWord(UpdataPwRequest updataPwRequest);
+	AdminInfo inspectPwdForUpdatePassword(UpdatePwRequest updatePwRequest);
 
 }

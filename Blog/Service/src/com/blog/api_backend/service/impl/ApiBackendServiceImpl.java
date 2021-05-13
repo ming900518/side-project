@@ -2,8 +2,12 @@ package com.blog.api_backend.service.impl;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import com.blog.db.content.dao.ContentMapper;
+import com.blog.db.content.model.Content;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +16,7 @@ import com.blog.api_backend.model.request.DeleteAdmin;
 import com.blog.api_backend.model.request.EditAdminRequest;
 import com.blog.api_backend.model.request.InsertAdminRequest;
 import com.blog.api_backend.model.request.LoginBackendRequest;
-import com.blog.api_backend.model.request.UpdataPwRequest;
+import com.blog.api_backend.model.request.UpdatePwRequest;
 import com.blog.api_backend.service.ApiBackendService;
 import com.blog.base.service.BaseService;
 import com.blog.db.admininfo.dao.AdminInfoMapper;
@@ -26,6 +30,9 @@ public class ApiBackendServiceImpl extends BaseService implements ApiBackendServ
 
 	@Autowired
 	AdminInfoMapper adminInfoMapper;
+
+	@Autowired
+	ContentMapper contentMapper;
 
 	@Override
 	public LoginOutput loginBackend(LoginBackendRequest loginBackendRequest) {
@@ -114,14 +121,14 @@ public class ApiBackendServiceImpl extends BaseService implements ApiBackendServ
 	}
 
 	@Override
-	public int updataPassWord(UpdataPwRequest updataPwRequest, Integer adminId) {
+	public int updatePassword(UpdatePwRequest updatePwRequest, Integer adminId) {
 		int success = 0;
 		AdminInfo adminInfo = new AdminInfo();
 		try {
-			String userPwMd5Code = EncryptUtil.digest(updataPwRequest.getUserPw());
-			String newMd5Code = EncryptUtil.digest(updataPwRequest.getNewPw());
-			updataPwRequest.setUserPw(userPwMd5Code);
-			adminInfo = adminInfoMapper.inspectPwdForupdataPassWord(updataPwRequest);
+			String userPwMd5Code = EncryptUtil.digest(updatePwRequest.getUserPw());
+			String newMd5Code = EncryptUtil.digest(updatePwRequest.getNewPw());
+			updatePwRequest.setUserPw(userPwMd5Code);
+			adminInfo = adminInfoMapper.inspectPwdForUpdatePassword(updatePwRequest);
 
 			if (adminInfo != null) {
 				try {
@@ -131,14 +138,23 @@ public class ApiBackendServiceImpl extends BaseService implements ApiBackendServ
 					adminInfoMapper.updateByPrimaryKeySelective(adminInfo);
 					success = 1;
 				} catch (Exception e) {
-					LogUtils.error(getClass(), "updataPassWord has error : " + e);
+					LogUtils.error(getClass(), "updatePassword has error : " + e);
 				}
 			} else {
 				success = 2;
 			}
 		} catch (Exception e) {
-			LogUtils.error(getClass(), "updataPassWord function encrypt md5Code has error : " + e);
+			LogUtils.error(getClass(), "updatePassword function encrypt md5Code has error : " + e);
 		}
 		return success;
+	}
+
+	@Override
+	public List<Content> queryContentList(Content content) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		if (content.getTitle() != null && !content.getTitle().equals(""))
+			paramMap.put("title", content.getTitle());
+		List<Content> contentListRequest = contentMapper.queryContentList(paramMap);
+		return contentListRequest;
 	}
 }

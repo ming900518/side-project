@@ -3,6 +3,7 @@ package com.blog.api_backend.controller;
 import java.io.File;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.blog.db.content.model.Content;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.NoSuchMessageException;
@@ -33,7 +35,7 @@ import com.blog.api_backend.model.request.DeleteAdmin;
 import com.blog.api_backend.model.request.EditAdminRequest;
 import com.blog.api_backend.model.request.InsertAdminRequest;
 import com.blog.api_backend.model.request.LoginBackendRequest;
-import com.blog.api_backend.model.request.UpdataPwRequest;
+import com.blog.api_backend.model.request.UpdatePwRequest;
 import com.blog.api_backend.model.response.FileUploadResponse;
 import com.blog.api_backend.service.ApiBackendService;
 import com.blog.base.controller.BaseController;
@@ -133,15 +135,6 @@ public class ApiBackendController extends BaseController {
 					res = 1;
 
 				respResult.setUrl(filePath);
-//				// save to db
-//				if (ValidateUtil.isNotBlank(filePath)) {
-//					if (ftype == 2) {
-//						HomeMVoiceView homeMVoiceView = new HomeMVoiceView();
-//						homeMVoiceView.getHomeMVoice().setHomeMVoiceId(id);
-//						homeMVoice.setHomeMVoice(filePath);
-//						res = apiBackendService.updateHomeMVoice(homeMVoiceView, 1);
-//					}
-//				}
 			}
 		} catch (NoSuchMessageException e) {
 			LogUtils.fileConteollerError(e.toString());
@@ -189,7 +182,7 @@ public class ApiBackendController extends BaseController {
 		return respLogin;
 	}
 
-	// 查詢商家
+	// 查詢後台用戶
 	@RequestMapping(value = "/queryAdmin", produces = "application/json")
 	public @ResponseBody BaseModel queryAdmin(HttpSession httpSession, HttpServletRequest request,
 			HttpServletResponse resp, @RequestBody AdminInfo adminInfo) {
@@ -289,9 +282,9 @@ public class ApiBackendController extends BaseController {
 	}
 
 	// 修改密碼
-	@RequestMapping(value = "/updataPw", produces = "application/json")
-	public @ResponseBody BaseModel updataPw(HttpSession session, HttpServletRequest request, HttpServletResponse resp,
-			@RequestBody UpdataPwRequest updataPwRequest) {
+	@RequestMapping(value = "/updatePw", produces = "application/json")
+	public @ResponseBody BaseModel updatePw(HttpSession session, HttpServletRequest request, HttpServletResponse resp,
+			@RequestBody UpdatePwRequest updatePwRequest) {
 		BaseModel res = new BaseModel();
 		AdminInfo adminInfo = (AdminInfo) session.getAttribute("adminInfo");
 		if (adminInfo == null) {
@@ -299,7 +292,7 @@ public class ApiBackendController extends BaseController {
 			res.setMessage("unlogin");
 			return res;
 		}
-		int result = apiBackendService.updataPassWord(updataPwRequest, adminInfo.getAdminId());
+		int result = apiBackendService.updatePassword(updatePwRequest, adminInfo.getAdminId());
 		if (result == 1) {
 			res.setResult(true);
 			res.setMessage("修改成功");
@@ -307,6 +300,18 @@ public class ApiBackendController extends BaseController {
 			res.setResult(false);
 			res.setMessage("修改失敗");
 		}
+		return res;
+	}
+
+	// 查詢文章列表
+	@RequestMapping(value = "/queryContentList", produces = "application/json")
+	public @ResponseBody
+	BaseModel queryContentList(HttpSession httpSession, HttpServletRequest request,
+									 HttpServletResponse resp, @RequestBody Content contentList) {
+		BaseModel res = new BaseModel();
+		List<Content> ContentListResponseList = new ArrayList();
+		ContentListResponseList = apiBackendService.queryContentList(contentList);
+		res = basicOutput(ContentListResponseList);
 		return res;
 	}
 }

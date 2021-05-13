@@ -7,8 +7,9 @@ import com.blog.api_backend.model.request.DeleteAdmin;
 import com.blog.api_backend.model.request.EditAdminRequest;
 import com.blog.api_backend.model.request.InsertAdminRequest;
 import com.blog.api_backend.model.request.LoginBackendRequest;
-import com.blog.api_backend.model.request.UpdataPwRequest;
+import com.blog.api_backend.model.request.UpdatePwRequest;
 import com.blog.db.admininfo.model.AdminInfo;
+import com.blog.db.content.model.Content;
 
 public interface ApiBackendService {
 
@@ -24,5 +25,7 @@ public interface ApiBackendService {
 
 	public int removeAdminInfo(DeleteAdmin deleteAdmin, Integer adminId);
 
-	public int updataPassWord(UpdataPwRequest updataPwRequest, Integer adminId);
+	public int updatePassword(UpdatePwRequest updatePwRequest, Integer adminId);
+
+	public List<Content> queryContentList(Content contentListRequest);
 }

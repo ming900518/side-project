@@ -200,8 +200,8 @@
 		from admin_info
 	</select>
 
-	<select id="inspectPwdForupdataPassWord"
-		parameterType="com.blog.api_backend.model.request.UpdataPwRequest"
+	<select id="inspectPwdForUpdatePassword"
+		parameterType="com.blog.api_backend.model.request.UpdatePwRequest"
 		resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />

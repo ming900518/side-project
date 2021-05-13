@@ -12,14 +12,35 @@ app.controller('contentController', function($timeout, $rootScope, $scope, $wind
 
 
 	$scope.contentList = [];
-	$scope.queryCondition = { "taxId": '' };
+	$scope.queryCondition = { "title": '' };
 
 
 	var columns_table = [
 		{ title: "Title", data: "title", sWidth: "10%" },
-		{ title: "Category", data: "category", sWidth: "10%" },
-		{ title: "Author", data: "author", sWidth: "10%" },
-		{ title: "Date", data: "date", sWidth: "10%" },
+		{ title: "Category", sWidth:"10%" ,data: null,render: function(data, type, full, meta) {
+				var btnStr = data.category1;
+				if (data.category2) {
+					btnStr = btnStr + ", " + data.category2
+				}
+				if (data.category3) {
+					btnStr = btnStr + ", " + data.category3
+				}
+				return btnStr
+			}
+		},
+		{ title: "Author", data: "adminId", sWidth: "10%" },
+		{
+			title: "Publish Date", sWidth: "10%", data: null, render: function (data, type, full, meta) {
+				var btnStr = $filter('date')(data.publishDate, 'yyyy/MM/dd HH:mm:ss');
+				return btnStr;
+			}
+		},
+		{
+			title: "Edit Date", sWidth: "10%", data: null, render: function (data, type, full, meta) {
+				var btnStr = $filter('date')(data.editDate, 'yyyy/MM/dd HH:mm:ss');
+				return btnStr;
+			}
+		},
 	];
 	var js = {
 		title: "Action", data: null, sWidth: "10%", "bSortable": false, render: function(data, type, full, meta) {
@@ -46,12 +67,15 @@ app.controller('contentController', function($timeout, $rootScope, $scope, $wind
 	$scope.queryContentList = function(param) {
 		contentService.queryContentList(param, function(data, status, headers, config) {
 			if (data.result) {
+				console.log(data.data)
 				$scope.contentList = data.data;
+				console.log($scope.contentList)
 				util.refreshDataTable(contentTable, $scope.contentList);
 
 			}
 		})
 	};
+
 	$scope.queryContentList($scope.queryCondition);
 
 	$scope.searchContent = function() {

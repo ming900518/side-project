@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.db.content.dao.ContentMapper">
+  <resultMap id="BaseResultMap" type="com.blog.db.content.model.Content">
+    <id column="CONTENT_ID" jdbcType="INTEGER" property="contentId" />
+    <result column="TITLE" jdbcType="VARCHAR" property="title" />
+    <result column="CATEGORY1" jdbcType="VARCHAR" property="category1" />
+    <result column="CATEGORY2" jdbcType="VARCHAR" property="category2" />
+    <result column="CATEGORY3" jdbcType="VARCHAR" property="category3" />
+    <result column="CONTENT" jdbcType="VARCHAR" property="content" />
+    <result column="CONTENT_ID" jdbcType="INTEGER" property="adminId" />
+    <result column="PUBLISH_DATE" jdbcType="TIMESTAMP" property="publishDate" />
+    <result column="EDIT_DATE" jdbcType="TIMESTAMP" property="editDate" />
+    <result column="BACKUP1" jdbcType="INTEGER" property="backup1" />
+    <result column="BACKUP2" jdbcType="INTEGER" property="backup2" />
+    <result column="BACKUP3" jdbcType="VARCHAR" property="backup3" />
+    <result column="BACKUP4" jdbcType="VARCHAR" property="backup4" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONTENT_ID, TITLE, CATEGORY1, CATEGORY2, CATEGORY3, CONTENT, ADMIN_ID, PUBLISH_DATE, EDIT_DATE, BACKUP1, BACKUP2, BACKUP3, BACKUP4
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from content
+    where CONTENT_ID = #{contentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from content
+    where CONTENT_ID = #{contentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.blog.db.content.model.Content" keyProperty="contentId" useGeneratedKeys="true">
+    insert into content (CONTENT_ID, TITLE, CATEGORY1, CATEGORY2, CATEGORY3, CONTENT, ADMIN_ID, PUBLISH_DATE, EDIT_DATE, BACKUP1, BACKUP2, BACKUP3, BACKUP4)
+    values (#{contentId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{category1,jdbcType=VARCHAR},
+      #{category2,jdbcType=VARCHAR}, #{category3,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR},
+      #{adminId,jdbcType=INTEGER}, #{publishDate,jdbcType=TIMESTAMP}, #{editDate,jdbcType=TIMESTAMP},
+      #{backup1,jdbcType=INTEGER}, #{backup2,jdbcType=INTEGER}, #{backup3,jdbcType=VARCHAR}, #{backup4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.blog.db.content.model.Content">
+    insert into content
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contentId != null">
+        CONTENT_ID,
+      </if>
+      <if test="title != null">
+        TITLE,
+      </if>
+      <if test="category1 != null">
+        CATEGORY1,
+      </if>
+      <if test="category2 != null">
+        CATEGORY2,
+      </if>
+      <if test="category3 != null">
+        CATEGORY3,
+      </if>
+      <if test="content != null">
+        CONTENT,
+      </if>
+      <if test="adminId != null">
+        ADMIN_ID,
+      </if>
+      <if test="publishDate != null">
+        PUBLISH_DATE,
+      </if>
+      <if test="editDate != null">
+        EDIT_DATE,
+      </if>
+      <if test="backup1 != null">
+        BACKUP1,
+      </if>
+      <if test="backup2 != null">
+        BACKUP2,
+      </if>
+      <if test="backup3 != null">
+        BACKUP3,
+      </if>
+      <if test="backup4 != null">
+        BACKUP4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contentId != null">
+        CONTENT_ID,
+      </if>
+      <if test="title != null">
+        TITLE,
+      </if>
+      <if test="category1 != null">
+        CATEGORY1,
+      </if>
+      <if test="category2 != null">
+        CATEGORY2,
+      </if>
+      <if test="category3 != null">
+        CATEGORY3,
+      </if>
+      <if test="content != null">
+        CONTENT,
+      </if>
+      <if test="adminId != null">
+        ADMIN_ID,
+      </if>
+      <if test="publishDate != null">
+        PUBLISH_DATE,
+      </if>
+      <if test="editDate != null">
+        EDIT_DATE,
+      </if>
+      <if test="backup1 != null">
+        BACKUP1,
+      </if>
+      <if test="backup2 != null">
+        BACKUP2,
+      </if>
+      <if test="backup3 != null">
+        BACKUP3,
+      </if>
+      <if test="backup4 != null">
+        BACKUP4,
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.blog.db.content.model.Content">
+    update content
+    <set>
+      <if test="contentId != null">
+        CONTENT_ID,
+      </if>
+      <if test="title != null">
+        TITLE,
+      </if>
+      <if test="category1 != null">
+        CATEGORY1,
+      </if>
+      <if test="category2 != null">
+        CATEGORY2,
+      </if>
+      <if test="category3 != null">
+        CATEGORY3,
+      </if>
+      <if test="content != null">
+        CONTENT,
+      </if>
+      <if test="adminId != null">
+        ADMIN_ID,
+      </if>
+      <if test="publishDate != null">
+        PUBLISH_DATE,
+      </if>
+      <if test="editDate != null">
+        EDIT_DATE,
+      </if>
+      <if test="backup1 != null">
+        BACKUP1,
+      </if>
+      <if test="backup2 != null">
+        BACKUP2,
+      </if>
+      <if test="backup3 != null">
+        BACKUP3,
+      </if>
+      <if test="backup4 != null">
+        BACKUP4,
+      </if>
+    </set>
+    where CONTENT_ID = #{contentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.blog.db.content.model.Content">
+    update content
+    set CONTENT_ID = #{contentId,jdbcType=INTEGER},
+        TITLE = #{title,jdbcType=VARCHAR},
+        CATEGORY1 = #{category1,jdbcType=VARCHAR},
+        CATEGORY2 = #{category2,jdbcType=VARCHAR},
+        CATEGORY3 = #{category3,jdbcType=VARCHAR},
+        CONTENT = #{content,jdbcType=VARCHAR},
+        ADMIN_ID = #{adminId,jdbcType=INTEGER},
+        PUBLISH_DATE = #{publishDate,jdbcType=TIMESTAMP},
+        EDIT_DATE = #{editDate,jdbcType=TIMESTAMP},
+        BACKUP1 = #{backup1,jdbcType=INTEGER},
+        BACKUP2 = #{backup2,jdbcType=INTEGER},
+        BACKUP3 = #{backup3,jdbcType=VARCHAR},
+        BACKUP4 = #{backup4,jdbcType=VARCHAR}
+  </update>
+  <select id="queryContentList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    SELECT * FROM content WHERE 1 = 1
+    <if test="title != null">
+      and TITLE = #{title,jdbcType=VARCHAR}
+    </if>
+  </select>
+</mapper>
