@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.blog.api_backend.model.response.ContentListResponse;
 import com.blog.db.content.dao.ContentMapper;
 import com.blog.db.content.model.Content;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,13 @@ import com.blog.db.admininfo.model.AdminInfo;
 import com.blog.util.EncryptUtil;
 import com.blog.util.LogUtils;
 import com.blog.util.TimerUtil;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Service
 public class ApiBackendServiceImpl extends BaseService implements ApiBackendService {
@@ -150,11 +158,40 @@ public class ApiBackendServiceImpl extends BaseService implements ApiBackendServ
 	}
 
 	@Override
-	public List<Content> queryContentList(Content content) {
+	public List<ContentListResponse> queryContentList(Content content) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		if (content.getTitle() != null && !content.getTitle().equals(""))
 			paramMap.put("title", content.getTitle());
-		List<Content> contentListRequest = contentMapper.queryContentList(paramMap);
+		List<ContentListResponse> contentListRequest = contentMapper.queryContentList(paramMap);
 		return contentListRequest;
+	}
+
+	@Override
+	public Content queryContent(Content content) {
+		Content contentRequest = contentMapper.selectByPrimaryKey(content.getContentId());
+		return contentRequest;
+	}
+
+	@Override
+	public int addContent(Content content, Integer adminId) {
+		int res = 0;
+		if (content.getContentId() != null) {
+			return -2;
+		}
+
+		Date nowDate = new Date();
+		content.setPublishDate(nowDate);
+		content.setEditDate(nowDate);
+		res = contentMapper.insert(content);
+		return res;
+	}
+
+	@Override
+	public int updateContent(Content content, Integer adminId) {
+		int res = 0;
+		Date nowDate = new Date();
+		content.setEditDate(nowDate);
+		res = contentMapper.updateByPrimaryKeySelective(content);
+		return res;
 	}
 }

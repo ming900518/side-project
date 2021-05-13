@@ -16,26 +16,32 @@ app.controller('contentEditController', function($stateParams, $rootScope, $scop
 
 	$scope.content = {};
 	$scope.contentId = $stateParams.contentId;
+	console.log($stateParams.adminId)
 	$scope.adminId = $stateParams.adminId;
 	$scope.queryContent = function(param) {
 		contentEditService.queryContent(param, function(data, status, headers, config) {
 			if (data.result) {
 				$scope.content = data.data;
+				CKEDITOR.replace( 'content' );
 			}
 		})
 	};
 
 	if ($scope.contentId != null) {
 		var param = {
-			"contentId": $scope.contentId,
-			"adminId": $scope.adminId
+			"contentId": $scope.contentId
 		};
 		$scope.queryContent(param);
+	} else {
+		CKEDITOR.replace('content');
 	}
 
 	$scope.saveContent = function(valid) {
+		$scope.content.content = CKEDITOR.instances.content.getData();
 		util.confirm('Save content?', function(r) {
 			if (r) {
+				$scope.content.adminId = $scope.adminId
+				console.log($scope.content)
 				contentEditService.saveContent($scope.content, function(data, status, headers, config) {
 					if (data.result) {
 						util.alert(data.message);

@@ -14,7 +14,7 @@
                 <div class="col-xs-12 col-sm-12 widget-container-col">
                     <div class="widget-box widget-color-samon" id="widget-box-9">
                         <div class="widget-header">
-                            <h5 class="widget-title">Add Content</h5>
+                            <h5 class="widget-title">Content Editor</h5>
                             <div class="widget-toolbar">
                                 <a href="#" data-action="collapse">
                                     <i class="1 ace-icon fa fa-chevron-up bigger-125"></i>
@@ -78,8 +78,9 @@
                                             <label class="col-sm-1 control-label no-padding-right">
                                                 <font color="#FF0000">*</font>Content </label>
                                             <div class="col-sm-11">
-                                                <input type="text" placeholder="" class="form-control"
-                                                    ng-model="content.content">
+                                                <textarea id="content" name="content" class="form-control"
+                                                          style="height: 200px"
+                                                          ng-model="content.content" ></textarea>
                                             </div>
                                         </div>
                                     </div>

@@ -69,7 +69,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
 			}
 		},
 		params: {
-			vendorId: null
+			contentId: null,
+			adminId: null
 		},
 		reload: true
 	}).state('updatePw', {

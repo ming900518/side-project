@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.blog.api_backend.model.response.ContentListResponse;
 import com.blog.db.content.model.Content;
+import com.blog.util.recaptchav2java.Http;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.NoSuchMessageException;
@@ -309,9 +311,47 @@ public class ApiBackendController extends BaseController {
 	BaseModel queryContentList(HttpSession httpSession, HttpServletRequest request,
 									 HttpServletResponse resp, @RequestBody Content contentList) {
 		BaseModel res = new BaseModel();
-		List<Content> ContentListResponseList = new ArrayList();
+		List<ContentListResponse> ContentListResponseList = new ArrayList();
 		ContentListResponseList = apiBackendService.queryContentList(contentList);
 		res = basicOutput(ContentListResponseList);
+		return res;
+	}
+
+	// 查詢文章內容
+	@RequestMapping(value = "/queryContent", produces = "application/json")
+	public @ResponseBody
+	BaseModel queryContent(HttpSession httpSession, HttpServletRequest request, HttpServletResponse response, @RequestBody Content content) {
+		BaseModel res = new BaseModel();
+		Content ContentResponse = new Content();
+		ContentResponse = apiBackendService.queryContent(content);
+		res = basicOutput(ContentResponse);
+		return res;
+	}
+
+	// 新增文章內容
+	@RequestMapping(value = "/saveContent", produces = "application/json")
+	public @ResponseBody BaseModel saveContent(HttpSession httpSession, HttpServletRequest request,
+											HttpServletResponse resp, @RequestBody Content content) {
+		BaseModel res = new BaseModel();
+		AdminInfo adminInfo = (AdminInfo) httpSession.getAttribute("adminInfo");
+		if (adminInfo == null) {
+			res.setResult(false);
+			res.setMessage("Unauthorized");
+			return res;
+		}
+		int result = 0;
+		if (content.getContentId() == null)
+			result = apiBackendService.addContent(content, adminInfo.getAdminId());
+		else
+			result = apiBackendService.updateContent(content, adminInfo.getAdminId());
+
+		if (result == 1) {
+			res.setResult(true);
+			res.setMessage("Success");
+		} else {
+			res.setResult(false);
+			res.setMessage("Fail");
+		}
 		return res;
 	}
 }

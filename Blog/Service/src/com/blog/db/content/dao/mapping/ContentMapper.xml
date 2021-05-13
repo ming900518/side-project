@@ -81,43 +81,43 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="contentId != null">
-        CONTENT_ID,
+        #{contentId,jdbcType=INTEGER},
       </if>
       <if test="title != null">
-        TITLE,
+        #{title,jdbcType=VARCHAR},
       </if>
       <if test="category1 != null">
-        CATEGORY1,
+        #{category1,jdbcType=VARCHAR},
       </if>
       <if test="category2 != null">
-        CATEGORY2,
+        #{category2,jdbcType=VARCHAR},
       </if>
       <if test="category3 != null">
-        CATEGORY3,
+        #{category3,jdbcType=VARCHAR},
       </if>
       <if test="content != null">
-        CONTENT,
+        #{content,jdbcType=VARCHAR},
       </if>
       <if test="adminId != null">
-        ADMIN_ID,
+        #{adminId,jdbcType=INTEGER},
       </if>
       <if test="publishDate != null">
-        PUBLISH_DATE,
+        #{publishDate,jdbcType=TIMESTAMP},
       </if>
       <if test="editDate != null">
-        EDIT_DATE,
+        #{editDate,jdbcType=TIMESTAMP},
       </if>
       <if test="backup1 != null">
-        BACKUP1,
+        #{backup1,jdbcType=INTEGER},
       </if>
       <if test="backup2 != null">
-        BACKUP2,
+        #{backup2,jdbcType=INTEGER},
       </if>
       <if test="backup3 != null">
-        BACKUP3,
+        #{backup3,jdbcType=INTEGER},
       </if>
       <if test="backup4 != null">
-        BACKUP4,
+        #{backup4,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -125,43 +125,43 @@
     update content
     <set>
       <if test="contentId != null">
-        CONTENT_ID,
+        CONTENT_ID = #{contentId,jdbcType=INTEGER},
       </if>
       <if test="title != null">
-        TITLE,
+        TITLE = #{title,jdbcType=VARCHAR},
       </if>
       <if test="category1 != null">
-        CATEGORY1,
+        CATEGORY1 = #{category1,jdbcType=VARCHAR},
       </if>
       <if test="category2 != null">
-        CATEGORY2,
+        CATEGORY2 = #{category2,jdbcType=VARCHAR},
       </if>
       <if test="category3 != null">
-        CATEGORY3,
+        CATEGORY3 = #{category3,jdbcType=VARCHAR},
       </if>
       <if test="content != null">
-        CONTENT,
+        CONTENT = #{content,jdbcType=VARCHAR},
       </if>
       <if test="adminId != null">
-        ADMIN_ID,
+        ADMIN_ID = #{adminId,jdbcType=INTEGER},
       </if>
       <if test="publishDate != null">
-        PUBLISH_DATE,
+        PUBLISH_DATE = #{publishDate,jdbcType=TIMESTAMP},
       </if>
       <if test="editDate != null">
-        EDIT_DATE,
+        EDIT_DATE = #{editDate,jdbcType=TIMESTAMP},
       </if>
       <if test="backup1 != null">
-        BACKUP1,
+        BACKUP1 = #{backup1,jdbcType=INTEGER},
       </if>
       <if test="backup2 != null">
-        BACKUP2,
+        BACKUP2 = #{backup2,jdbcType=INTEGER},
       </if>
       <if test="backup3 != null">
-        BACKUP3,
+        BACKUP3 = #{backup3,jdbcType=INTEGER},
       </if>
       <if test="backup4 != null">
-        BACKUP4,
+        BACKUP4 = #{backup4,jdbcType=INTEGER},
       </if>
     </set>
     where CONTENT_ID = #{contentId,jdbcType=INTEGER}
@@ -181,9 +181,20 @@
         BACKUP2 = #{backup2,jdbcType=INTEGER},
         BACKUP3 = #{backup3,jdbcType=VARCHAR},
         BACKUP4 = #{backup4,jdbcType=VARCHAR}
+    where CONTENT_ID = #{contentId,jdbcType=INTEGER}
   </update>
-  <select id="queryContentList" parameterType="java.util.Map" resultMap="BaseResultMap">
-    SELECT * FROM content WHERE 1 = 1
+  <resultMap id="queryContentList" type="com.blog.api_backend.model.response.ContentListResponse">
+    <result column="CONTENT_ID" jdbcType="INTEGER" property="contentId" />
+    <result column="TITLE" jdbcType="VARCHAR" property="title" />
+    <result column="CATEGORY1" jdbcType="VARCHAR" property="category1" />
+    <result column="CATEGORY2" jdbcType="VARCHAR" property="category2" />
+    <result column="CATEGORY3" jdbcType="VARCHAR" property="category3" />
+    <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+    <result column="PUBLISH_DATE" jdbcType="TIMESTAMP" property="publishDate" />
+    <result column="EDIT_DATE" jdbcType="TIMESTAMP" property="editDate" />
+  </resultMap>
+  <select id="queryContentList" parameterType="java.util.Map" resultMap="queryContentList">
+    SELECT co.CONTENT_ID, co.TITLE, co.CATEGORY1, co.CATEGORY2, co.CATEGORY3, ai.USER_NAME, co.PUBLISH_DATE, co.EDIT_DATE FROM content co left join admin_info ai on co.ADMIN_ID = ai.ADMIN_ID WHERE 1 = 1
     <if test="title != null">
       and TITLE = #{title,jdbcType=VARCHAR}
     </if>

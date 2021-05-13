@@ -1,5 +1,6 @@
 package com.blog.db.content.dao;
 
+import com.blog.api_backend.model.response.ContentListResponse;
 import com.blog.db.content.model.Content;
 
 import java.util.List;
@@ -18,5 +19,5 @@ public interface ContentMapper {
 
     int updateByPrimaryKey(Content record);
 
-    List<Content> queryContentList(Map<String, Object> paramMap);
+    List<ContentListResponse> queryContentList(Map<String, Object> paramMap);
 }

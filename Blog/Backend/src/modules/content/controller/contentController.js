@@ -28,7 +28,7 @@ app.controller('contentController', function($timeout, $rootScope, $scope, $wind
 				return btnStr
 			}
 		},
-		{ title: "Author", data: "adminId", sWidth: "10%" },
+		{ title: "Author", data: "userName", sWidth: "10%" },
 		{
 			title: "Publish Date", sWidth: "10%", data: null, render: function (data, type, full, meta) {
 				var btnStr = $filter('date')(data.publishDate, 'yyyy/MM/dd HH:mm:ss');
@@ -67,9 +67,7 @@ app.controller('contentController', function($timeout, $rootScope, $scope, $wind
 	$scope.queryContentList = function(param) {
 		contentService.queryContentList(param, function(data, status, headers, config) {
 			if (data.result) {
-				console.log(data.data)
 				$scope.contentList = data.data;
-				console.log($scope.contentList)
 				util.refreshDataTable(contentTable, $scope.contentList);
 
 			}
@@ -83,14 +81,14 @@ app.controller('contentController', function($timeout, $rootScope, $scope, $wind
 	};
 
 	$scope.addContent = function() {
-		$state.go('contentEdit');
+		$state.go('contentEdit', { "adminId": $rootScope.rootUser.adminId });
 	};
 
 
 	$('#content_table tbody').on('click', 'button[name="edit_content"]', function() {
 		var index = $(this).val();
 		var content = $scope.contentList[index];
-		$state.go('contentEdit', { "contentId": content.contentId });
+		$state.go('contentEdit', { "contentId": content.contentId, "adminId": $rootScope.rootUser.adminId });
 	});
 
 	$('#content_table tbody').on('click', 'button[name="delete_content"]', function() {
