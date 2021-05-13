@@ -423,3 +423,4 @@ local.properties
 .sts4-cache/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,linux,node,angular,java,java-web,intellij
+Blog/Service/build
