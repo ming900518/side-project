@@ -194,4 +194,11 @@ public class ApiBackendServiceImpl extends BaseService implements ApiBackendServ
 		res = contentMapper.updateByPrimaryKeySelective(content);
 		return res;
 	}
+
+	@Override
+	public int deleteContent(Content content, Integer adminId) {
+		int res = 0;
+		res = contentMapper.deleteByPrimaryKey(content.getContentId());
+		return res;
+	}
 }

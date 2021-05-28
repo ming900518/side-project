@@ -354,4 +354,28 @@ public class ApiBackendController extends BaseController {
 		}
 		return res;
 	}
+
+	// 刪除文章
+	@RequestMapping(value = "/deleteContent", produces = "application/json")
+	public @ResponseBody BaseModel deleteContent(HttpSession httpSession, HttpServletRequest request,
+											   HttpServletResponse resp, @RequestBody Content content) {
+		BaseModel res = new BaseModel();
+		AdminInfo adminInfo = (AdminInfo) httpSession.getAttribute("adminInfo");
+		if (adminInfo == null) {
+			res.setResult(false);
+			res.setMessage("Unauthorized");
+			return res;
+		}
+		int result = 0;
+			result = apiBackendService.deleteContent(content, adminInfo.getAdminId());
+
+		if (result == 1) {
+			res.setResult(true);
+			res.setMessage("Success");
+		} else {
+			res.setResult(false);
+			res.setMessage("Fail");
+		}
+		return res;
+	}
 }

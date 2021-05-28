@@ -35,4 +35,6 @@ public interface ApiBackendService {
 	int addContent(Content content, Integer adminId);
 
 	int updateContent(Content content, Integer adminId);
+
+	int deleteContent(Content content, Integer adminId);
 }
