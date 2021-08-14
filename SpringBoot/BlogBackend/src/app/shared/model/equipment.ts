@@ -1,0 +1,29 @@
+export class Equipment {
+    equipmentId: number;
+    importSource: number;
+    equipmentType: number;
+    equipmentDescription: null;
+    equipmentCode: string;
+    equipmentStatus: number;
+    equipmentTitle: string;
+    equipmentModel: string;
+    equipmentBrand: string;
+    equipmentSource: string;
+    year: number;
+    unit: string;
+    shoppingDate: Date;
+    location: string;
+    remarks: string;
+    price: number;
+    quantity: number;
+    isBorrow: number;
+    userCode: string;
+    userName: string;
+    acceptanceDate: Date;
+    creditDate: Date;
+    estimatedReturnDays: number;
+    creationDate: Date;
+    createdBy: string;
+    updateDate: Date;
+    updatedBy: string;
+}
