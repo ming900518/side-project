@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingchang.BlogService.database.ArticleMapper">
+  <resultMap id="BaseResultMap" type="com.mingchang.BlogService.model.database.Article">
+    <id column="ARTICLE_ID" jdbcType="INTEGER" property="articleId" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="AUTHOR" jdbcType="INTEGER" property="author" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
+    <result column="CREATION_DATE" jdbcType="TIMESTAMP" property="creationDate" />
+    <result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mingchang.BlogService.model.database.Article">
+    <result column="CONTENT" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ARTICLE_ID, NAME, AUTHOR, STATUS, CREATION_DATE, UPDATE_DATE
+  </sql>
+  <sql id="Blob_Column_List">
+    CONTENT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from article
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from article
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mingchang.BlogService.model.database.Article">
+    insert into article (ARTICLE_ID, NAME, AUTHOR, 
+      STATUS, CREATION_DATE, UPDATE_DATE, 
+      CONTENT)
+    values (#{articleId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{author,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{creationDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingchang.BlogService.model.database.Article">
+    insert into article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        ARTICLE_ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="author != null">
+        AUTHOR,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="creationDate != null">
+        CREATION_DATE,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="content != null">
+        CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        #{articleId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="creationDate != null">
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingchang.BlogService.model.database.Article">
+    update article
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        AUTHOR = #{author,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="creationDate != null">
+        CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        CONTENT = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mingchang.BlogService.model.database.Article">
+    update article
+    set NAME = #{name,jdbcType=VARCHAR},
+      AUTHOR = #{author,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=INTEGER},
+      CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
+      UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      CONTENT = #{content,jdbcType=LONGVARCHAR}
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingchang.BlogService.model.database.Article">
+    update article
+    set NAME = #{name,jdbcType=VARCHAR},
+      AUTHOR = #{author,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=INTEGER},
+      CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
+      UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP}
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </update>
+</mapper>

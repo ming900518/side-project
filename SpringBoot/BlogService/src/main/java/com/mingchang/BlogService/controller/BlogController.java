@@ -15,6 +15,7 @@ import java.util.Date;
 
 @Controller
 @RequestMapping
+@CrossOrigin(origins = { "http://localhost:4200", "http://localhost:3200" })  // 跨設定，加了這個ng serve才能用
 public class BlogController {
 
     private final BlogService blogService;
