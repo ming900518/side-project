@@ -6,15 +6,15 @@ import com.mingchang.BlogService.model.database.AdminInfo;
 import com.mingchang.BlogService.model.request.LoginBackendRequest;
 import com.mingchang.BlogService.service.BlogService;
 import com.mingchang.BlogService.utility.TimerUtility;
-import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 
-@RestController
-@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+@Controller
+@RequestMapping
 public class BlogController {
 
     private final BlogService blogService;
@@ -23,9 +23,10 @@ public class BlogController {
         this.blogService = blogService;
     }
 
-    @RequestMapping("/")
-    public String directBrowse() {
-        return "Seems you're trying to browse the service directly from your client, this is not a good idea. Go check my webpage: https://mingchang137.su";
+    @RequestMapping(value = "/")
+    public @ResponseBody
+    String directBrowse() {
+        return "<h1>Oops!</h1><hr><p>Seems you're trying to browse the service directly from your client, this is not a good idea. Go check <a href='https://mingchang137.su'>my webpage</a>.</p>";
     }
 
     @RequestMapping(value = "/login_backend", produces = "application/json")
