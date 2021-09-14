@@ -1,0 +1,22 @@
+<idea-plugin>
+  <version>1.0-SNAPSHOT</version>
+  <change-notes>韭菜總司令</change-notes>
+  <idea-version since-build="212.5080" until-build="212.*" />
+  <id>su.mingchang137.commander-of-leek</id>
+  <name>Commander of Leek</name>
+  <vendor email="ming@mingchang137.su" url="https://mingchang137.su">Ming Chang</vendor>
+  <description><![CDATA[<h1>韭菜總司令</h1><br><p>用Yahoo! Finance API取得最新股市資訊<br>（功能尚未完善）</p>]]></description>
+  <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+  <extensions defaultExtensionNs="com.intellij">
+    <notificationGroup id="StockNG" displayType="BALLOON" />
+    <!-- Add your extensions here -->
+  </extensions>
+  <actions>
+    <!-- Add your actions here -->
+    <action id="info.main" class="Main" text="韭菜總司令 - Main">
+      <add-to-group group-id="ToolsMenu" anchor="first" />
+    </action>
+  </actions>
+</idea-plugin>

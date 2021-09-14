@@ -1,0 +1,46 @@
+<application>
+  <component name="ActionsLocalSummary">
+    <e n="EditorBackSpace">
+      <i c="4" l="1631632910783" />
+    </e>
+    <e n="EditorCopy">
+      <i c="1" l="1631633449724" />
+    </e>
+    <e n="Generate">
+      <i c="2" l="1631631648200" />
+    </e>
+    <e n="GotoAction">
+      <i c="1" l="1631632141763" />
+    </e>
+    <e n="NewFile">
+      <i c="1" l="1631631637182" />
+    </e>
+    <e n="SettingsEntryPoint">
+      <i c="1" l="1631631689398" />
+    </e>
+    <e n="ShowProjectStructureSettings">
+      <i c="1" l="1631631685805" />
+    </e>
+    <e n="ShowSettings">
+      <i c="1" l="1631631690696" />
+    </e>
+    <e n="WelcomeScreen.OpenProject">
+      <i c="1" l="1631631617435" />
+    </e>
+    <e n="com.intellij.diagnostic.IdeMessagePanel$4">
+      <i c="2" l="1631633416829" />
+    </e>
+    <e n="com.intellij.ide.ReopenProjectAction">
+      <i c="8" l="1631639662302" />
+    </e>
+    <e n="com.intellij.notification.NotificationAction$Simple">
+      <i c="1" l="1631637619084" />
+    </e>
+    <e n="com.intellij.openapi.project.DumbAwareAction$SimpleDumbAwareAction">
+      <i c="1" l="1631632143147" />
+    </e>
+    <e n="com.intellij.openapi.wm.impl.ToolWindowHeader$HideAction">
+      <i c="1" l="1631637620830" />
+    </e>
+  </component>
+</application>

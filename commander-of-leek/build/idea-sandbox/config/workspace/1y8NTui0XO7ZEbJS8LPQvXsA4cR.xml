@@ -1,0 +1,109 @@
+<project version="4">
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="-1">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/1.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="ToolWindowManager">
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25034723" />
+      <window_info id="Structure" order="1" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Commit" order="3" />
+      <window_info id="Learn" order="4" />
+      <window_info id="Pull Requests" order="5" />
+      <window_info id="Space Code Reviews" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" visible="true" weight="0.32974684" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" id="Run" order="3" />
+      <window_info anchor="bottom" id="TODO" order="4" />
+      <window_info anchor="bottom" id="Problems View" order="5" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Services" order="9" show_stripe_button="false" />
+      <window_info anchor="right" id="Space Automation" order="0" />
+      <window_info anchor="right" id="Layout Validation" order="1" />
+    </layout>
+    <recentWindows>
+      <value>Event Log</value>
+      <value>Project</value>
+    </recentWindows>
+  </component>
+  <component name="Trusted.Project.Settings" hasCheckedIfOldProject="true" />
+  <component name="WindowStateProjectService">
+    <state x="308" y="166" key="IDE.errors.dialog" timestamp="1631633474991">
+      <screen x="0" y="25" width="1440" height="790" />
+    </state>
+    <state x="308" y="166" key="IDE.errors.dialog/0.25.1440.790@0.25.1440.790" timestamp="1631633474991" />
+    <state x="230" y="114" width="900" height="700" key="SettingsEditor" timestamp="1631631702726">
+      <screen x="0" y="25" width="1440" height="790" />
+    </state>
+    <state x="230" y="114" width="900" height="700" key="SettingsEditor/0.25.1440.790@0.25.1440.790" timestamp="1631631702726" />
+    <state x="385" y="132" key="search.everywhere.popup" timestamp="1631632143178">
+      <screen x="0" y="25" width="1440" height="790" />
+    </state>
+    <state x="385" y="132" key="search.everywhere.popup/0.25.1440.790@0.25.1440.790" timestamp="1631632143178" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/1.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI" />
+      <state key="GlobalLibrariesConfigurable.UI" />
+      <state key="JdkListConfigurable.UI" />
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>test</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI" />
+    </states>
+  </component>
+</project>
