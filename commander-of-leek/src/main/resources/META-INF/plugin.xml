@@ -18,8 +18,11 @@
 
     <actions>
         <!-- Add your actions here -->
-        <action id="info.main" class="Main" text="韭菜總司令 - Main">
+        <action id="info.main" class="Main" text="韭菜總司令 - 新增">
             <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+        <action id="info.stop" class="Stop" text="韭菜總司令 - 停止更新">
+            <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="info.main"/>
         </action>
     </actions>
 </idea-plugin>

@@ -1,6 +1,7 @@
 <idea-plugin>
-  <version>1.0-SNAPSHOT</version>
-  <change-notes>韭菜總司令</change-notes>
+  <version>1.1-SNAPSHOT</version>
+  <change-notes>1.0: 實作新增功能
+      1.1: 實作停止功能，改用通知</change-notes>
   <idea-version since-build="212.5080" until-build="212.*" />
   <id>su.mingchang137.commander-of-leek</id>
   <name>Commander of Leek</name>
@@ -15,8 +16,11 @@
   </extensions>
   <actions>
     <!-- Add your actions here -->
-    <action id="info.main" class="Main" text="韭菜總司令 - Main">
+    <action id="info.main" class="Main" text="韭菜總司令 - 新增">
       <add-to-group group-id="ToolsMenu" anchor="first" />
+    </action>
+    <action id="info.stop" class="Stop" text="韭菜總司令 - 停止更新">
+      <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="info.main" />
     </action>
   </actions>
 </idea-plugin>
