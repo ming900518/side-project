@@ -23,6 +23,7 @@ intellij {
 patchPluginXml {
     changeNotes = """
       1.0: 實作新增功能
+      <br>
       1.1: 實作停止功能，改用通知
       """
 }

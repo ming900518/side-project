@@ -1,6 +1,7 @@
 <idea-plugin>
   <version>1.1-SNAPSHOT</version>
   <change-notes>1.0: 實作新增功能
+      &lt;br&gt;
       1.1: 實作停止功能，改用通知</change-notes>
   <idea-version since-build="212.5080" until-build="212.*" />
   <id>su.mingchang137.commander-of-leek</id>
