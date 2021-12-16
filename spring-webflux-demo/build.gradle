@@ -27,13 +27,15 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
     testImplementation 'org.springframework.restdocs:spring-restdocs-webtestclient'
+    implementation 'org.springframework.data:spring-data-r2dbc'
+    implementation 'org.mariadb:r2dbc-mariadb'
+
+
 }
 
 test {
