@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "dbPass",
+      "type": "java.lang.String",
+      "description": "database password from command line argument."
+  }
+] }

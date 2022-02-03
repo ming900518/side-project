@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: "blog-service"
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: "true"
+        max_fetch_depth: "1"
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+server:
+  compression:
+    enabled: true
+    min-response-size: 512
+  tomcat:
+    basedir: "~/ServiceHome"
+  http2:
+    enabled: true
+  shutdown: graceful
+dbPass: ""
+logging:
+  level:
+    io:
+      r2dbc:
+        postgresql:
+          QUERY: DEBUG
+          PARAM: DEBUG
