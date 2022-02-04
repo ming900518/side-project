@@ -2,13 +2,13 @@ package su.mingchang.blogservice.handler;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 import su.mingchang.blogservice.model.database.Admin;
 import su.mingchang.blogservice.model.database.Article;
-import su.mingchang.blogservice.repository.database.AdminRepository;
 import su.mingchang.blogservice.service.BackendService;
 
 /**
@@ -23,7 +23,6 @@ import su.mingchang.blogservice.service.BackendService;
 @RequiredArgsConstructor
 public class BackendHandler {
 
-    private final AdminRepository adminRepository;
     private final BackendService backendService;
 
     /**
@@ -34,13 +33,13 @@ public class BackendHandler {
      */
 
     public Mono<ServerResponse> login(ServerRequest request) {
-        return request.bodyToMono(Admin.class).flatMap(body -> adminRepository.findByAccountAndPassword(body.getAccount(), body.getPassword()).flatMap(data -> {
+        return backendService.login(request.bodyToMono(Admin.class)).flatMap(data -> {
             if (Boolean.TRUE.equals(data.getStatus())) {
                 return ServerResponse.ok().body(Mono.just(data), Admin.class);
             } else {
                 return ServerResponse.status(HttpStatus.UNAUTHORIZED).build();
             }
-        }).switchIfEmpty(ServerResponse.status(HttpStatus.UNAUTHORIZED).build()));
+        }).switchIfEmpty(ServerResponse.status(HttpStatus.UNAUTHORIZED).build());
     }
 
     /**
@@ -51,7 +50,7 @@ public class BackendHandler {
      */
 
     public Mono<ServerResponse> listArticles(ServerRequest request) {
-        return ServerResponse.ok().body(backendService.listArticles(request.bodyToMono(Article.class)), Article.class);
+        return ServerResponse.ok().contentType(MediaType.APPLICATION_NDJSON).body(backendService.listArticles(request.bodyToMono(Article.class)), Article.class);
     }
 
 }

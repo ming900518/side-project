@@ -4,7 +4,9 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import su.mingchang.blogservice.model.backend.ArticleList;
+import su.mingchang.blogservice.model.database.Admin;
 import su.mingchang.blogservice.model.database.Article;
+import su.mingchang.blogservice.repository.database.AdminRepository;
 import su.mingchang.blogservice.repository.database.ArticleRepository;
 
 /**
@@ -17,10 +19,16 @@ import su.mingchang.blogservice.repository.database.ArticleRepository;
 @Service
 public class BackendService {
 
+    private final AdminRepository adminRepository;
     private final ArticleRepository articleRepository;
 
-    public BackendService(ArticleRepository articleRepository) {
+    public BackendService(AdminRepository adminRepository, ArticleRepository articleRepository) {
+        this.adminRepository = adminRepository;
         this.articleRepository = articleRepository;
+    }
+
+    public Mono<Admin> login(Mono<Admin> request) {
+        return request.flatMap(body -> adminRepository.findByAccountAndPassword(body.getAccount(), body.getPassword()).flatMap(Mono::just));
     }
 
     public Flux<ArticleList> listArticles(Mono<Article> request) {
