@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.data.relational.core.mapping.Column;
 
 @Data
-public class ArticleList {
+public class BackendArticleList {
 
     @Column("articleId")
     private Integer articleId;
@@ -14,4 +14,5 @@ public class ArticleList {
     private String tags;
     @Column("updateByName")
     private String updateByName;
+
 }

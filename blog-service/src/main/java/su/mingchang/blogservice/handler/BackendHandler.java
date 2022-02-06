@@ -53,5 +53,16 @@ public class BackendHandler {
         return ServerResponse.ok().contentType(MediaType.APPLICATION_NDJSON).body(backendService.listArticles(request.bodyToMono(Article.class)), Article.class);
     }
 
+    /**
+     * 查詢文章內容
+     *
+     * @param request 請求，後台傳進來的查詢條件
+     * @return 所有符合條件的文章
+     */
+
+    public Mono<ServerResponse> queryArticle(ServerRequest request) {
+        return ServerResponse.ok().contentType(MediaType.APPLICATION_NDJSON).body(backendService.queryArticle(request.bodyToMono(Article.class)), Article.class);
+    }
+
 }
 

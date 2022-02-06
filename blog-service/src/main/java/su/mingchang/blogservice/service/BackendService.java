@@ -3,7 +3,7 @@ package su.mingchang.blogservice.service;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import su.mingchang.blogservice.model.backend.ArticleList;
+import su.mingchang.blogservice.model.backend.BackendArticleList;
 import su.mingchang.blogservice.model.database.Admin;
 import su.mingchang.blogservice.model.database.Article;
 import su.mingchang.blogservice.repository.database.AdminRepository;
@@ -31,8 +31,12 @@ public class BackendService {
         return request.flatMap(body -> adminRepository.findByAccountAndPassword(body.getAccount(), body.getPassword()).flatMap(Mono::just));
     }
 
-    public Flux<ArticleList> listArticles(Mono<Article> request) {
-        return request.flatMapMany(body -> articleRepository.listArticles(body.getTitle(), body.getContent(), body.getUpdateBy()));
+    public Flux<BackendArticleList> listArticles(Mono<Article> request) {
+        return request.flatMapMany(body -> articleRepository.listArticlesBackend(body.getTitle(), body.getContent(), body.getUpdateBy()));
+    }
+
+    public Mono<Article> queryArticle(Mono<Article> request) {
+        return request.flatMap(body -> articleRepository.findById(body.getArticleId()));
     }
 }
 
