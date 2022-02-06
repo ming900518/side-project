@@ -14,8 +14,6 @@ server:
   compression:
     enabled: true
     min-response-size: 512
-  tomcat:
-    basedir: "~/ServiceHome"
   http2:
     enabled: true
   shutdown: graceful
