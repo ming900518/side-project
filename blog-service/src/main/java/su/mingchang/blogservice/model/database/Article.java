@@ -3,7 +3,9 @@ package su.mingchang.blogservice.model.database;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 import java.sql.Timestamp;
@@ -14,24 +16,26 @@ import java.sql.Timestamp;
 @Table("article")
 public class Article {
     @Id
-    @Column("articleId")
+    @Column("\"articleId\"")
     private Integer articleId;
 
-    @Column("title")
+    @Column("\"title\"")
     private String title;
 
-    @Column("content")
+    @Column("\"content\"")
     private String content;
 
-    @Column("createdBy")
+    @Column("\"createdBy\"")
     private Integer createdBy;
 
-    @Column("creationDate")
+    @Column("\"creationDate\"")
+    @CreatedDate
     private Timestamp creationDate;
 
-    @Column("updateBy")
+    @Column("\"updateBy\"")
     private Integer updateBy;
 
-    @Column("updateDate")
+    @Column("\"updateDate\"")
+    @LastModifiedDate
     private Timestamp updateDate;
 }

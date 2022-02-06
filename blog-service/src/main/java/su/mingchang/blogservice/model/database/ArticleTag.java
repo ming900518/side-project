@@ -13,12 +13,12 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table("articleTag")
 public class ArticleTag {
     @Id
-    @Column("articleTagId")
+    @Column("\"articleTagId\"")
     private Integer articleTagId;
 
-    @Column("articleId")
+    @Column("\"articleId\"")
     private Integer articleId;
 
-    @Column("tagId")
+    @Column("\"tagId\"")
     private Integer tagId;
 }
