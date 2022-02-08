@@ -17,15 +17,8 @@ import su.mingchang.blogservice.repository.database.ArticleRepository;
  */
 
 @Service
-public class BackendService {
-
-    private final AdminRepository adminRepository;
-    private final ArticleRepository articleRepository;
-
-    public BackendService(AdminRepository adminRepository, ArticleRepository articleRepository) {
-        this.adminRepository = adminRepository;
-        this.articleRepository = articleRepository;
-    }
+public record BackendService(AdminRepository adminRepository,
+                             ArticleRepository articleRepository) {
 
     public Mono<Admin> login(Mono<Admin> request) {
         return request.flatMap(body -> adminRepository.findByAccountAndPassword(body.getAccount(), body.getPassword()).flatMap(Mono::just));

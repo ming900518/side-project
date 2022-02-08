@@ -12,17 +12,15 @@ import su.mingchang.blogservice.service.FrontendService;
 
 /**
  * 前台Handler
- * @see <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-fn-handler-functions">Spring WebFlux documentation (HandlerFunction)</a>
  *
  * @author Ming Chang (<a href="mailto:ming@mingchang137.su">ming@mingchang137.su</a>)
  * @version 1.0
+ * @see <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-fn-handler-functions">Spring WebFlux documentation (HandlerFunction)</a>
  */
 
 @Component
 @RequiredArgsConstructor
-public class FrontendHandler {
-
-    private final FrontendService frontendService;
+public record FrontendHandler(FrontendService frontendService) {
 
     /**
      * 查詢文章列表

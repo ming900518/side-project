@@ -16,13 +16,7 @@ import su.mingchang.blogservice.repository.database.ArticleRepository;
  */
 
 @Service
-public class FrontendService {
-
-    private final ArticleRepository articleRepository;
-
-    public FrontendService(ArticleRepository articleRepository) {
-        this.articleRepository = articleRepository;
-    }
+public record FrontendService(ArticleRepository articleRepository) {
 
     public Flux<FrontendArticleList> listArticles(Mono<Tag> request) {
         return request.flatMapMany(body -> articleRepository.listArticlesFrontend(body.getTagId()));
