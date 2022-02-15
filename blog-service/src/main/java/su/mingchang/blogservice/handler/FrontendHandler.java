@@ -1,6 +1,5 @@
 package su.mingchang.blogservice.handler;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -19,7 +18,6 @@ import su.mingchang.blogservice.service.FrontendService;
  */
 
 @Component
-@RequiredArgsConstructor
 public record FrontendHandler(FrontendService frontendService) {
 
     /**

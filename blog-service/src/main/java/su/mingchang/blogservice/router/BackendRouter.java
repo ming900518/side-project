@@ -8,8 +8,8 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import su.mingchang.blogservice.handler.BackendHandler;
 import su.mingchang.blogservice.handler.FrontendHandler;
 
-import static org.springframework.http.MediaType.*;
-import static org.springframework.web.reactive.function.server.RequestPredicates.*;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
 
 /**
  * 後台Router

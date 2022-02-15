@@ -1,6 +1,5 @@
 package su.mingchang.blogservice.handler;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -20,7 +19,6 @@ import su.mingchang.blogservice.service.BackendService;
  */
 
 @Component
-@RequiredArgsConstructor
 public record BackendHandler(BackendService backendService) {
 
     /**
