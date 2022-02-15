@@ -1,5 +1,7 @@
 package su.mingchang.blogservice.service;
 
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -21,7 +23,14 @@ public record BackendService(AdminRepository adminRepository,
                              ArticleRepository articleRepository) {
 
     public Mono<Admin> login(Mono<Admin> request) {
-        return request.flatMap(body -> adminRepository.findByAccountAndPassword(body.getAccount(), body.getPassword()).flatMap(Mono::just));
+        return request.flatMap(body -> {
+            ExampleMatcher matcher = ExampleMatcher
+                    .matchingAll()
+                    .withMatcher("account", ExampleMatcher.GenericPropertyMatchers.exact())
+                    .withMatcher("password", ExampleMatcher.GenericPropertyMatchers.exact());
+            Example<Admin> example = Example.of(body, matcher);
+            return adminRepository.findOne(example);
+        });
     }
 
     public Flux<BackendArticleList> listArticles(Mono<Article> request) {
