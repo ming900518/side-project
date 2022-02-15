@@ -13,22 +13,22 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table("admin")
 public class Admin {
     @Id
-    @Column("\"adminId\"")
+    @Column("admin_id")
     private Integer adminId;
 
-    @Column("\"name\"")
+    @Column("name")
     private String name;
 
-    @Column("\"role\"")
+    @Column("role")
     private Integer role;
 
-    @Column("\"account\"")
+    @Column("account")
     private String account;
 
-    @Column("\"password\"")
+    @Column("password")
     private String password;
 
-    @Column("\"status\"")
+    @Column("status")
     private Boolean status;
 
 }

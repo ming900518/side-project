@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
+
 import java.sql.Timestamp;
 
 @Data
@@ -16,26 +17,26 @@ import java.sql.Timestamp;
 @Table("article")
 public class Article {
     @Id
-    @Column("\"articleId\"")
+    @Column("article_id")
     private Integer articleId;
 
-    @Column("\"title\"")
+    @Column("title")
     private String title;
 
-    @Column("\"content\"")
+    @Column("content")
     private String content;
 
-    @Column("\"createdBy\"")
+    @Column("created_by")
     private Integer createdBy;
 
-    @Column("\"creationDate\"")
+    @Column("creation_date")
     @CreatedDate
     private Timestamp creationDate;
 
-    @Column("\"updateBy\"")
+    @Column("update_by")
     private Integer updateBy;
 
-    @Column("\"updateDate\"")
+    @Column("update_date")
     @LastModifiedDate
     private Timestamp updateDate;
 }

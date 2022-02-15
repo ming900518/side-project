@@ -13,9 +13,9 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table("tag")
 public class Tag {
     @Id
-    @Column("\"tagId\"")
+    @Column("tag_id")
     private Integer tagId;
 
-    @Column("\"name\"")
+    @Column("name")
     private String name;
 }

@@ -10,15 +10,15 @@ import org.springframework.data.relational.core.mapping.Table;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table("articleTag")
+@Table("article_tag")
 public class ArticleTag {
     @Id
-    @Column("\"articleTagId\"")
+    @Column("article_tag_id")
     private Integer articleTagId;
 
-    @Column("\"articleId\"")
+    @Column("article_id")
     private Integer articleId;
 
-    @Column("\"tagId\"")
+    @Column("tag_id")
     private Integer tagId;
 }
